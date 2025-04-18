@@ -1,6 +1,6 @@
 ## Animated Kangaroo: A clone of 'trustedconnectivity.valid.com'
 
-This is a clone of [Valid](https://trustedconnectivity.valid.com) using Next.js 15.
+This is a clone of [Valid.com](https://trustedconnectivity.valid.com) using Next.js 15.
 
 To test on local:
 - Clone the repository `git clone https://github.com/ruxy1212/animated-kangaroo`.

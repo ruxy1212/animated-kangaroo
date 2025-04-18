@@ -3,13 +3,28 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --dark-black: #01010c;
+  --black: #0a0d3a;
+  --white: #fbfafe;
+  --primary: #05c2ff;
+  --primary-dark: #131bff;
+  --secondary: #182799;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-el-dark-black: var(--dark-black);
+  --color-el-black: var(--black);
+  --color-el-white: var(--white);
+  --color-el-primary: var(--primary);
+  --color-el-secondary: var(--secondary);
+  --color-el-primary-dark: var(--primary-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-grotesk: var(--font-pp-radio-grotesk);
+  --font-editorial: var(--font-pp-editorial-grotesk);
+  --font-inter: var(--font-inter-tight);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +34,78 @@
   }
 }
 
+@utility col-count-*{
+  column-count: --value(integer);
+}
+@utility col-gap-*{
+  column-gap: --spacing(--value(integer));
+}
+
+@layer utilities {
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: 4.167vw;
+    background: linear-gradient(
+      90deg,
+      #f9453f,
+      #fa9b26 12.5%,
+      #2ee76f 25%,
+      #18e1f3 37.5%,
+      #3f0085 50%,
+      #18e1f3 62.5%,
+      #2ee76f 75%,
+      #fa9b26 87.5%,
+      #f9453f
+    );
+    background-size: 200% 100%;
+    background-position: 0 50%;
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .gradient-border:hover::before {
+    background-position: 100% 50%;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.super-title em {
+  -webkit-text-fill-color: transparent;
+  background: #f9453f;
+  background: linear-gradient(90deg, #f9453f, #fa9b26 12.5%, #2ee76f 25%, #18e1f3 37.5%, #3f0085 50%, #18e1f3 62.5%, #2ee76f 75%, #fa9b26 87.5%, #f9453f);
+  -webkit-background-clip: text;
+  background-size: 300% 100%;
+  background-position-x: 0%;
+  transition: background-position-x 0.1s linear;
+}
+
+.super-title h1 {
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, #f9453f, #fa9b26 12.5%, #2ee76f 25%, #18e1f3 37.5%, #3f0085 50%, #18e1f3 62.5%, #2ee76f 75%, #fa9b26 87.5%, #f9453f);
+  background: #f9453f;
+  background: linear-gradient(90deg, #f9453f, #fa9b26 22.5%, #2ee76f 45%, #18e1f3 67.5%, #3f0085 90%);
+  -webkit-background-clip: text;
+  background-size: 400% 100%;
+  color: #fbfafe;
+  text-align: center;
+  transform-origin: "50% 50%";
+  font-size: 6.5vw;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: .82;
+}
+
+.insights-carousel-item > div:first-child{
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+}
+

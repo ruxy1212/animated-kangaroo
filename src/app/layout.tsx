@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
 import CursorFollowWrapper from "@/components/util/cursor-follow-wrapper";
 
@@ -12,6 +13,24 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const ppRadioGrotesk = localFont({
+  src: '../font/PPRadioGrotesk-Regular.woff2',
+  display: 'swap',
+  variable: '--font-pp-radio-grotesk',
+})
+
+const ppEditorialGrotesk = localFont({
+  src: '../font/PPEditorialNew-Regular.woff2',
+  display: 'swap',
+  variable: '--font-pp-editorial-grotesk',
+})
+
+const interTight = localFont({
+  src: '../font/InterTight-Regular.woff2',
+  display: 'swap',
+  variable: '--font-inter-tight',
+})
 
 export const metadata: Metadata = {
   title: "Animated Kangaroo",
@@ -26,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ppRadioGrotesk.variable} ${ppEditorialGrotesk.variable} ${interTight.variable} antialiased`}
       >
         {children}
         <CursorFollowWrapper />

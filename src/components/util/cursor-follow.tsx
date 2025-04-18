@@ -42,7 +42,7 @@ const CursorFollow: React.FC<MouseTrailProps> = ({
   idleAnimation = false,
   idleAnimationCount = 5,
   size = 14,
-  trailCount = 14,
+  trailCount = 10,
   ...props
 }) => {
   const trails: Trail[] = [];
@@ -53,22 +53,27 @@ const CursorFollow: React.FC<MouseTrailProps> = ({
   let animationId: number;
   let timer: ReturnType<typeof setTimeout>;
   let isIdle = false;
+  let lastClientX = 0;
+  let lastClientY = 0;
 
   const draw = (): void => {
     let { x, y } = mousePosition;
-  
     trails.forEach((trail, index, trails) => {
       const nextTrail = trails[index + 1] || trails[0];
-      trail.x += (x - trail.x) * 0.05;
-      trail.y += (y - trail.y) * 0.05;
+
+      trail.x += (x - trail.x) * (1 - 0.6);
+      trail.y += (y - trail.y) * (1 - 0.6);
       trail.draw(isIdle, idleAnimationCount);
-      x += (nextTrail.x - trail.x) * 0.35;
-      y += (nextTrail.y - trail.y) * 0.35;
+
+      if (!isIdle || index >= trailCount - idleAnimationCount) {
+        x += (nextTrail.x - trail.x) * 0.35;
+        y += (nextTrail.y - trail.y) * 0.35;
+      }
     });
   };
 
   const animate = (): void => {
-    draw();    
+    draw();
     animationId = window.requestAnimationFrame(animate);
   };
 
@@ -88,13 +93,22 @@ const CursorFollow: React.FC<MouseTrailProps> = ({
   const cursorListener = (event: MouseEvent): void => {
     mousePosition.x = event.pageX;
     mousePosition.y = event.pageY;
+    lastClientX = event.clientX;
+    lastClientY = event.clientY;
     setIdleAnimations();
   };
 
   const touchListener = (event: TouchEvent): void => {
-    mousePosition.x = event.touches[0].clientX;
-    mousePosition.y = event.touches[0].clientY;
+    mousePosition.x = event.touches[0].pageX;
+    mousePosition.y = event.touches[0].pageY;
+    lastClientX = event.touches[0].clientX;
+    lastClientY = event.touches[0].clientY;
     setIdleAnimations();
+  };
+
+  const scrollListener = (): void => {
+    mousePosition.x = lastClientX + window.scrollX;
+    mousePosition.y = lastClientY + window.scrollY;
   };
 
   const setIdleAnimations = (): void => {
@@ -119,17 +133,21 @@ const CursorFollow: React.FC<MouseTrailProps> = ({
       loadTrailElements();
       window.addEventListener("mousemove", cursorListener);
       window.addEventListener("touchmove", touchListener);
+      window.addEventListener("scroll", scrollListener);
+      window.addEventListener("wheel", scrollListener);
       animate();
     }
 
     return () => {
       window.removeEventListener("mousemove", cursorListener);
       window.removeEventListener("touchmove", touchListener);
+      window.removeEventListener("scroll", scrollListener);
+      window.removeEventListener("wheel", scrollListener);
       window.cancelAnimationFrame(animationId);
       const trailContainer = document.getElementById(id) as HTMLDivElement;
       removeAllChildNodes(trailContainer);
     };
-  });
+  },);
 
   return (
     <TrailContainer

@@ -5,12 +5,23 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+type AnimationProps = {
+  from: gsap.TweenVars;
+  to: gsap.TweenVars;
+  duration?: number;
+  ease?: string;
+  stagger?: number;
+};
+
 export default function ReadingText({text}: {text: string}) {
   
   const containerRef = useRef(null);
   useGSAP(() => {
     if (!containerRef.current) return;
-    function animateWhenVisible(elements, animationProps) {
+    function animateWhenVisible(
+      elements: string | Element | Element[] | NodeListOf<Element>, 
+      animationProps: AnimationProps
+    ) {
       gsap.set(elements, animationProps.from);
       ScrollTrigger.create({
         trigger: elements,

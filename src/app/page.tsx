@@ -9,12 +9,20 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import Carousel from "@/components/carousel/Carousel";
-import AnimatedScrolling from "@/components/partners/AnimatedScrolling";
 import ScrollSection from "@/components/partners/ScrollSection";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import ButtonCarousel from "@/components/carousel/ButtonCarousel";
 
 gsap.registerPlugin(ScrollTrigger);
+
+type AnimationProps = {
+  from: gsap.TweenVars;
+  to: gsap.TweenVars;
+  duration?: number;
+  ease?: string;
+  stagger?: number;
+};
 
 export default function Home() {
   const heroSection = useRef(null);
@@ -153,14 +161,13 @@ export default function Home() {
   }, { scope: solutionsSection });
 
   useGSAP(() => {
-    function animateWhenVisible(elements, animationProps) {
+    function animateWhenVisible(elements: string | Element | Element[] | NodeListOf<Element>, animationProps: AnimationProps) {
       if(insightsSection.current === null) return;
       gsap.set(elements, animationProps.from);
       
-      // Create the ScrollTrigger
       ScrollTrigger.create({
         trigger: elements,
-        start: 'top 85%', // Start when top of element hits 85% down from top of viewport
+        start: 'top 85%', 
         onEnter: () => {
           gsap.to(elements, {
             ...animationProps.to,
@@ -169,7 +176,7 @@ export default function Home() {
             stagger: animationProps.stagger || 0
           });
         },
-        once: true // Only trigger once
+        once: true 
       });
     }
 
@@ -186,105 +193,14 @@ export default function Home() {
     });
   }, { scope: insightsSection });
 
-  
-
   const sentence = 'We deliver trusted connectivity and guarantee interoperability through:';
   const evolve = 'Stay informed on the latest trends and discover how the world around you is evolving.';
   const evolveWords = evolve.split(' ');
   const words = sentence.split(' ');
 
-  // transform: translate(-50%, 0%) translate3d(0px, 0px, 0px) scale(0.9033, 0.9033);
-
   return (
     <div className="bg-el-black min-h-screen">
       <Header />
-      {/* <header className="block h-auto left-0 fixed right-0 top-0 transition-[all_0.4s_cubic-bezier(0.16,1,0.3,1)] w-full z-50 px-4 py-6 lg:px-0 lg:py-[1.667vw]">
-        <div className="w-full md:w-[90vw] xl:w-[80vw] mx-auto flex justify-between items-center">
-          <Link href={"/"}>
-            <Image src="/img/logo.svg" alt="Logo" height="0" width="0" className="h-7 md:h-8 lg:h-9 w-auto"/>
-          </Link>
-          <nav className="hidden lg:flex gap-8 text-el-white">
-            <div className="relative group peer">
-              <Link href={"#"} className="hover:opacity-50 text-lg transition-colors duration-200">Solutions</Link>
-              <div className="fixed top-0 left-0 w-full -z-10 justify-between px-[5vw] pb-[3rem] pt-[6rem] bg-el-white opacity-0 group-hover:opacity-100 hidden group-hover:flex items-center transition-opacity delay-1000">
-                <ul className="col-count-2 col-gap-16">
-                  <li className="flex flex-col mb-5">
-                    <p className="text-2xl text-el-black">SIMs</p>
-                    <ul className="text-gray-500 text-sm">
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">SIMs</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="flex flex-col mb-5">
-                    <p className="text-2xl text-el-black">eSIMs</p>
-                    <ul className="text-gray-500 text-sm">
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">eSIMSs for IoT and Consumer</a>
-                      </li>
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">eSIM Interoperability</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="flex flex-col mb-5">
-                    <p className="text-2xl text-el-black">eSIM Solutions</p>
-                    <ul className="text-gray-500 text-sm">
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">Remote SIM Provisioning</a>
-                      </li>
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">eSIM Onboarding Journey</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="flex flex-col mb-5">
-                    <p className="text-2xl text-el-black">5G</p>
-                    <ul className="text-gray-500 text-sm">
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">OTA Suite</a>
-                      </li>
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">Private Networks</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="flex flex-col mb-5">
-                    <p className="text-2xl text-el-black">Integrated SE</p>
-                    <ul className="text-gray-500 text-sm">
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">iSE</a>
-                      </li>
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">iSIM</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="flex flex-col mb-5">
-                    <p className="text-2xl text-el-black">IoT Connectivity</p>
-                    <ul className="text-gray-500 text-sm">
-                      <li>
-                        <a className="hover:opacity-60 transition-all" href="#">IoT Connectivity</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>                  
-                <div className="min-w-96 max-w-1/2 h-72 rounded-full overflow-hidden relative">
-                  <div className="absolute inset-0 bg-el-black opacity-0 z-10"></div>
-                  <video preload="metadata" autoPlay loop={true} playsInline={true} muted={true} poster="" className="h-full">
-                    <source src="/video/Hero-valid.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </div>
-            </div>
-            <Link href={"#"} className="hover:opacity-50 text-base transition-colors duration-200 peer-hover:invisible">Insights</Link>
-            <Link href={"#"} className="hover:opacity-50 text-base transition-colors duration-200 peer-hover:invisible">About</Link>
-            <Link href={"#"} className="hover:opacity-50 text-base transition-colors duration-200 peer-hover:invisible">Careers</Link>
-          </nav>
-          <Link href="#contact-modal" className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:border-white">Talk to our experts</Link>
-        </div>
-      </header> */}
       <section ref={heroSection} className="relative w-full min-h-screen overflow-hidden p-[90vw_0_30vw] md:p-[28.625vw_0_10vw]" data-component="hero-supertitle">
         <div className="absolute h-full w-full left-0 top-0 transform opacity-100 scale-100 transition-none hero-video will-change-transform">
           <video preload="metadata" autoPlay loop={true} playsInline={true} muted={true} poster="/img/bg-valid-video.jpg" className="w-full align-middle h-full object-cover left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0">
@@ -351,43 +267,7 @@ export default function Home() {
         <div className="px-2 md:px-3">
           <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="w-full max-w-[450px] md:max-w-screen mx-auto h-[80vh] md:h-[55vw]">
-              <div className="h-full w-full rounded-2xl border border-transparent transition-colors hover:border-el-primary-dark duration-1000 bg-el-dark-black relative overflow-hidden group">
-                <div className="insights-carousel h-full w-full">
-                  <a className="insights-carousel-item h-full w-full flex flex-col">
-                    <div className="p-[40px_60px_56px_16px] md:p-[2.5vw] h-[48vh] md:h-[33vw] bg-el-white relative z-10">
-                      <p className="text-sm font-semibold text-el-black">Latest blog posts</p>
-                      <div>
-                        <div className="flex mt-20 md:mt-12 mb-4 gap-3.5 text-xs text-gray-800">
-                          <p>24 February 2024</p>
-                          <p className="flex gap-1.5 items-center">
-                            <Image src="/img/clock.svg" alt="clock" height={0} width={0} className="w-3 h-3"/>
-                            <span>8 min read</span>
-                          </p>
-                        </div>
-                        <h2 className="text-el-dark-black font-medium text-2xl md:text-3xl">Valid&apos;s Take on Multiple Enabled Profile</h2>
-                      </div>
-                    </div>
-                    <div className="h-[32vh] md:h-[22vw]">
-                      <Image src="/img/mobile-people.jpg" alt="insights" unoptimized= {true} height={0} width={0} className="w-full h-[60vh] -mt-[15vh] object-cover duration-1000 transition-transform group-hover:scale-105"/>
-                    </div>
-                  </a>
-                </div>
-                <div className="absolute top-0 left-0 p-[40px_60px_56px_16px] md:p-[2.5w] h-[48vh] md:h-[33vw] z-20 w-full">
-                  <div className="w-full h-full relative">
-                    <div className="counter absolute top-7 md:top-0 md:right-0 text-el-primary-dark text-5xl md:text-7xl font-medium">
-                      <span className="current">1</span>/<span className="total">3</span>
-                    </div>
-                    <div className="absolute bottom-2 left-0 flex gap-2.5">
-                      <button className="w-9 h-9 rounded-full border border-el-dark-black transition-colors hover:bg-el-dark-black/10 flex items-center justify-center rotate-180 group">
-                        <Image src="/img/arrow-left.svg" alt="arrow-left" height={0} width={0} className="w-3 h-3 group-hover:scale-90"/>
-                      </button>
-                      <button className="w-9 h-9 rounded-full border border-el-dark-black transition-colors hover:bg-el-dark-black/10 flex items-center justify-center group">
-                        <Image src="/img/arrow-right.svg" alt="arrow-right" height={0} width={0} className="w-3 h-3 group-hover:scale-90"/>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ButtonCarousel />
             </div>
             <div className="w-full max-w-[450px] md:max-w-screen mx-auto h-[80vh] md:h-[55vw]">
               <div className="h-full w-full rounded-2xl border border-transparent transition-colors hover:border-el-primary-dark duration-1000 bg-el-dark-black relative group overflow-hidden">

@@ -20,7 +20,6 @@ const Header = () => {
       lastY = currentY;
 
       if (currentY === 0) {
-        // Back at top
         gsap.to(header, {
           y: 0,
           backgroundColor: "transparent",
@@ -58,11 +57,6 @@ const Header = () => {
   }, []);
 
   return (
-    // <div
-    //   ref={headerRef}
-    //   className="fixed top-0 left-0 w-full z-50 text-white p-4 transition-all"
-    //   style={{ backgroundColor: "transparent" }}
-    // >
     <header ref={headerRef} className="block h-auto left-0 fixed right-0 top-0 transition-[all_0.4s_cubic-bezier(0.16,1,0.3,1)] w-full z-50 px-4 py-6 lg:px-0 lg:py-[1.667vw]" style={{ backgroundColor: "transparent" }}>
       <div className="w-full md:w-[90vw] xl:w-[80vw] mx-auto flex justify-between items-center">
         <Link href={"/"}>
@@ -150,7 +144,6 @@ const Header = () => {
         <Link href="#contact-modal" className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white">Talk to our experts</Link>
       </div>
     </header>
-    // </div>
   );
 };
 

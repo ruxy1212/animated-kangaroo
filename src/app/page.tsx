@@ -13,6 +13,7 @@ import ScrollSection from "@/components/partners/ScrollSection";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import ButtonCarousel from "@/components/carousel/ButtonCarousel";
+import MobileMenu from "@/components/header/MobileMenu";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -201,6 +202,7 @@ export default function Home() {
   return (
     <div className="bg-el-black min-h-screen">
       <Header />
+      <MobileMenu />
       <section ref={heroSection} className="relative w-full min-h-screen overflow-hidden p-[90vw_0_30vw] xs:p-[45vw_0_30vw] md:p-[28.625vw_0_10vw]" data-component="hero-supertitle">
         <div className="absolute h-full w-full left-0 top-0 transform opacity-100 scale-100 transition-none hero-video will-change-transform">
           <video preload="metadata" autoPlay loop={true} playsInline={true} muted={true} poster="/img/bg-valid-video.jpg" className="w-full align-middle h-full object-cover left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0">

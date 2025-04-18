@@ -46,7 +46,7 @@ export default function ButtonCarousel() {
       "<"
     );
 
-    tl.add(() => {}, "+=0.1");
+    // tl.add(() => {}, "+=0.1");
 
     tl.fromTo(
       imageRef.current,
@@ -69,7 +69,7 @@ export default function ButtonCarousel() {
         gsap.fromTo(
           total,
           { opacity: 0 },
-          { opacity: 1, duration: 1, delay: 0.2 }
+          { opacity: 1, duration: 0.5, delay: 0.2 }
         );
       }
     }

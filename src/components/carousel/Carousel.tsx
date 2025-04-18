@@ -126,12 +126,12 @@ const Carousel: React.FC = () => {
       }, 0);
       
       initialTL.to(items[0].querySelector('.text-container'), {
-        height: '40vh',
+        height: '50vh',
         ease: 'power2.out',
       }, 0);
       
       initialTL.to(items[0].querySelector('.image-container'), {
-        height: '60vh',
+        height: '50vh',
         ease: 'power2.out',
       }, 0);
       
@@ -147,12 +147,12 @@ const Carousel: React.FC = () => {
       }, 0);
       
       initialTL.to(items[1].querySelector('.text-container'), {
-        height: '40vh',
+        height: '50vh',
         ease: 'power2.out',
       }, 0);
       
       initialTL.to(items[1].querySelector('.image-container'), {
-        height: '60vh',
+        height: '50vh',
         ease: 'power2.out',
       }, 0);
       
@@ -195,10 +195,10 @@ const Carousel: React.FC = () => {
           onUpdate: self => {
             const progress = self.progress;
             gsap.set(item.querySelector('.text-container'), { 
-              height: gsap.utils.interpolate(55, 40, progress) + 'vh' 
+              height: gsap.utils.interpolate(65, 50, progress) + 'vh' 
             });
             gsap.set(item.querySelector('.image-container'), { 
-              height: gsap.utils.interpolate(45, 60, progress) + 'vh' 
+              height: gsap.utils.interpolate(35, 50, progress) + 'vh' 
             });
             gsap.set(item.querySelector('img'), { 
               opacity: progress,
@@ -242,10 +242,10 @@ const Carousel: React.FC = () => {
           scale: 1,
         });
         gsap.set(item.querySelector('.text-container'), {
-          height: '45vh',
+          height: '50vh',
         });
         gsap.set(item.querySelector('.image-container'), {
-          height: '55vh',
+          height: '50vh',
         });
       });
     }
@@ -274,8 +274,8 @@ const Carousel: React.FC = () => {
             className="w-full md:w-1/2 flex flex-col h-[100vh] shrink-0"
           >
             <div
-              className={`text-container ${cn("text-black p-6 md:p-10 lg:pt-12 flex flex-col", item.bg)}`}
-              style={{ height: '55vh' }}
+              className={`text-container ${cn("text-black p-6 md:p-10 pt-12 md:pt-14 flex flex-col", item.bg)}`}
+              style={{ height: '65vh' }}
             >
               <div className="flex flex-col justify-center items-start w-full md:w-60">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">{item.title}</h2>
@@ -294,7 +294,7 @@ const Carousel: React.FC = () => {
             </div>
             <div
               className="image-container overflow-hidden"
-              style={{ height: '45vh' }}
+              style={{ height: '35vh' }}
             >
               <Image
                 width={800}

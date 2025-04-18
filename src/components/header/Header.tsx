@@ -47,7 +47,8 @@ const Header = () => {
     };
 
     const onScroll = () => {
-      requestAnimationFrame(updateHeader);
+      if(window.innerWidth >= 768)
+        requestAnimationFrame(updateHeader);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -57,7 +58,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header ref={headerRef} className="block h-auto left-0 fixed right-0 top-0 transition-[all_0.4s_cubic-bezier(0.16,1,0.3,1)] w-full z-50 px-4 py-6 lg:px-0 lg:py-[1.667vw]" style={{ backgroundColor: "transparent" }}>
+    <header ref={headerRef} className="block h-auto left-0 absolute md:fixed right-0 top-0 transition-[all_0.4s_cubic-bezier(0.16,1,0.3,1)] w-full z-50 px-4 py-6 lg:px-0 lg:py-[1.667vw]" style={{ backgroundColor: "transparent" }}>
       <div className="w-full md:w-[90vw] xl:w-[80vw] mx-auto flex justify-between items-center">
         <Link href={"/"}>
           <Image src="/img/logo.svg" alt="Logo" height="0" width="0" className="h-7 md:h-8 lg:h-9 w-auto"/>

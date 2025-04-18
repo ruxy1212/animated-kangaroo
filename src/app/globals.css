@@ -11,6 +11,11 @@
   --secondary: #182799;
 }
 
+@theme {
+  --breakpoint-xs: 32rem;
+  --breakpoint-3xl: 120rem;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

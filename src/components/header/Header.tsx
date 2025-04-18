@@ -8,7 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Header = () => {
   const headerRef = useRef<HTMLDivElement>(null);
-  // const lastScroll = useRef(0);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -25,21 +24,23 @@ const Header = () => {
         gsap.to(header, {
           y: 0,
           backgroundColor: "transparent",
+          paddingTop: "1rem", 
+          paddingBottom: "1rem", 
           duration: 0.3,
           ease: "power2.out"
         });
       } else if (direction === "down") {
-        // Hide header
         gsap.to(header, {
           y: "-100%",
           duration: 0.3,
           ease: "power2.out"
         });
       } else {
-        // Scroll up: show header with background
         gsap.to(header, {
           y: 0,
-          backgroundColor: "rgba(0, 102, 255, 0.9)", // blue
+          backgroundColor: "rgb(19, 27, 255)",
+          paddingTop: "0.625rem", 
+          paddingBottom: "0.625rem", 
           duration: 0.3,
           ease: "power2.out"
         });
@@ -62,7 +63,7 @@ const Header = () => {
     //   className="fixed top-0 left-0 w-full z-50 text-white p-4 transition-all"
     //   style={{ backgroundColor: "transparent" }}
     // >
-    <header className="block h-auto left-0 fixed right-0 top-0 transition-[all_0.4s_cubic-bezier(0.16,1,0.3,1)] w-full z-50 px-4 py-6 lg:px-0 lg:py-[1.667vw]" style={{ backgroundColor: "transparent" }}>
+    <header ref={headerRef} className="block h-auto left-0 fixed right-0 top-0 transition-[all_0.4s_cubic-bezier(0.16,1,0.3,1)] w-full z-50 px-4 py-6 lg:px-0 lg:py-[1.667vw]" style={{ backgroundColor: "transparent" }}>
       <div className="w-full md:w-[90vw] xl:w-[80vw] mx-auto flex justify-between items-center">
         <Link href={"/"}>
           <Image src="/img/logo.svg" alt="Logo" height="0" width="0" className="h-7 md:h-8 lg:h-9 w-auto"/>
@@ -146,7 +147,7 @@ const Header = () => {
           <Link href={"#"} className="hover:opacity-50 text-base transition-colors duration-200 peer-hover:invisible">About</Link>
           <Link href={"#"} className="hover:opacity-50 text-base transition-colors duration-200 peer-hover:invisible">Careers</Link>
         </nav>
-        <Link href="#contact-modal" className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:border-white">Talk to our experts</Link>
+        <Link href="#contact-modal" className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white">Talk to our experts</Link>
       </div>
     </header>
     // </div>

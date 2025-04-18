@@ -310,8 +310,8 @@ const ScrollSection: React.FC = () => {
                 <ReadingText text="We offer trusted connectivity solutions to device makers, connectivity providers and IoT players worldwide" />
               </div>
               <div className="text-center py-4">
-                <Link href="#" className="gradient-border relative py-2 px-6 md:px-8 text-xs">
-                  More about us
+                <Link href="#" className="gradient-border relative text-xs px-0.5 py-2.5">
+                  <span className="py-2 px-6 md:px-8 bg-el-black">More about us</span>
                 </Link>
               </div>
             </div>

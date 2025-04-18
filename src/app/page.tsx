@@ -244,7 +244,7 @@ export default function Home() {
           <Carousel/>
         </div>
       </section>
-      <section ref={insightsSection} className="w-full min-h-screen">
+      <section ref={insightsSection} className="w-full min-h-screen relative z-10">
         <div className="mb-20 md:mb-[10vw]">
           <div className="flex flex-col gap-3">
             <span className="insights-text font-semibold text-xs uppercase block text-center">Latest Insights</span>
@@ -258,8 +258,8 @@ export default function Home() {
               </div>
             </div>
             <div className="text-center py-4">
-              <Link href="#" className="gradient-border relative py-2 px-6 md:px-8 text-xs">
-                  All Insights
+              <Link href="#" className="gradient-border relative text-xs px-0.5 py-2.5">
+                  <span className="py-2 px-6 md:px-8 bg-el-black">All Insights</span>
               </Link>
             </div>
           </div>

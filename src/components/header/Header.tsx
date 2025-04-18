@@ -43,6 +43,9 @@ const Header = () => {
           duration: 0.3,
           ease: "power2.out"
         });
+        gsap.to('#menu-complete-trigger', {
+          top: "8px"
+        });
       }
     };
 

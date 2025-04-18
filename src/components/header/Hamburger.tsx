@@ -1,8 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
-export default function Hamburger() {
-  const [isOpen, setIsOpen] = useState(false);
+interface HamburgerProps {
+  isOpen: boolean;
+  setIsOpen: () => void;
+}
+
+export default function Hamburger({isOpen, setIsOpen}: HamburgerProps) {
   const topRef = useRef<HTMLDivElement>(null);
   const middleRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -27,7 +31,7 @@ export default function Hamburger() {
     <div
       id="menu-complete-trigger"
       className="fixed top-4 lg:hidden right-4 md:right-[5vw] z-[99] px-3 py-2.5 cursor-pointer bg-white/10 backdrop-blur-2xl rounded-lg shadow-[0px_0px_1px_0px_white]"
-      onClick={() => setIsOpen(prev => !prev)}
+      onClick={setIsOpen}
     >
       <div className="relative w-4 h-4 flex flex-col items-center justify-center gap-0.5">
         <div

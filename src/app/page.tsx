@@ -211,13 +211,22 @@ export default function Home() {
   const evolveWords = evolve.split(' ');
   const words = sentence.split(' ');
 
-  console.log('these', response, respond);
 
   return (
     <div className="bg-el-black min-h-screen">
       <Header contactExpert={contactExpert}/>
       <MobileMenu contactExpert={contactExpert}/>
-      <ContactExpert isOpen={modal} onClose={()=>setModal(false)} />
+      <ContactExpert
+        isOpen={modal}
+        onClose={()=>setModal(false)}
+        showDialogue={()=>{
+          setResponse({
+            title: "Request Sent Successfully",
+            message: "Your response has been saved! You will receive an email shortly for further information."
+          });
+          setRespond(true);
+        }}
+      />
       <section ref={heroSection} className="relative w-full min-h-screen overflow-hidden p-[90vw_0_30vw] xs:p-[45vw_0_30vw] md:p-[28.625vw_0_10vw]" data-component="hero-supertitle">
         <div className="absolute h-full w-full left-0 top-0 transform opacity-100 scale-100 transition-none hero-video will-change-transform">
           <video preload="metadata" autoPlay loop={true} playsInline={true} muted={true} poster="/img/bg-valid-video.jpg" className="w-full align-middle h-full object-cover left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0">
@@ -345,16 +354,6 @@ export default function Home() {
           buttonText="Got it"
         />
       )}
-      <div className="flex min-h-screen items-center justify-center">
-        <button 
-          onClick={() => setRespond(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded-md fixed top-0 left-0 z-[999]"
-        >
-          Open Modal
-        </button>
-
-        
-      </div>
     </div>
   );
 }

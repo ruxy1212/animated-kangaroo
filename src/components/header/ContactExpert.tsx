@@ -3,13 +3,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
+import ExpertForm from './_fragment/ExpertForm';
 
 type ContactExpertProps = {
   isOpen: boolean;
   onClose: () => void;
+  showDialogue: () => void;
 };
 
-const ContactExpert: React.FC<ContactExpertProps> = ({ isOpen, onClose }) => {
+const ContactExpert: React.FC<ContactExpertProps> = ({ isOpen, onClose, showDialogue }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const formColumnRef = useRef<HTMLDivElement>(null);
@@ -107,113 +109,7 @@ const ContactExpert: React.FC<ContactExpertProps> = ({ isOpen, onClose }) => {
                 </button>
               </div>
               <h3 className="text-xl md:text-2xl font-normal md:font-semibold mb-8 font-grotesk text-el-dark-black text-center md:text-left">Talk to our experts</h3>
-              
-              <form className="space-y-4 text-xs text-el-dark-black">
-                <div>
-                  <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Work Email Address*" 
-                    className="w-full p-3 md:p-4 border border-gray-300 font-inter rounded-lg"
-                    required
-                  />
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <input 
-                    type="text" 
-                    name="firstName" 
-                    placeholder="First Name*" 
-                    className="w-full p-3 md:p-4 border border-gray-300 font-inter rounded-lg"
-                    required
-                  />
-                  <input 
-                    type="text" 
-                    name="lastName" 
-                    placeholder="Last name*" 
-                    className="w-full p-3 md:p-4 border border-gray-300 font-inter rounded-lg"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <input 
-                    type="text" 
-                    name="company" 
-                    placeholder="Company*" 
-                    className="w-full p-3 md:p-4 border border-gray-300 font-inter rounded-lg"
-                    required
-                  />
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <select 
-                    name="region" 
-                    className="w-full p-3 md:p-4 border border-gray-300 font-inter rounded-lg"
-                    required
-                  >
-                    <option value="">Region*</option>
-                    <option value="China">China</option>
-                    <option value="North America">North America</option>
-                    <option value="Asia">Asia</option>
-                    <option value="Africa">Africa</option>
-                    <option value="Middle East">Middle East</option>
-                    <option value="LATAM">LATAM</option>
-                    <option value="Brazil">Brazil</option>
-                    <option value="Europe">Europe</option>
-                  </select>
-                  
-                  <select 
-                    name="businessType" 
-                    className="w-full p-3 md:p-4 border border-gray-300 font-inter rounded-lg"
-                    required
-                  >
-                    <option value="">Business type*</option>
-                    <option value="Industry Analyst">Industry Analyst</option>
-                    <option value="OEM">OEM</option>
-                    <option value="IoT Customer">IoT Customer</option>
-                    <option value="Others">Others</option>
-                    <option value="MNO">MNO</option>
-                    <option value="MVNO">MVNO</option>
-                    <option value="MVNE">MVNE</option>
-                    <option value="ODM">ODM</option>
-                    <option value="Enterprise Customer">Enterprise Customer</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <textarea 
-                    name="message" 
-                    placeholder="Message" 
-                    rows={3}
-                    className="w-full p-3 md:p-4 border border-gray-300 font-inter rounded-lg"
-                    required
-                  ></textarea>
-                </div>
-                
-                <div className="flex items-center ms-4">
-                  <input 
-                    type="checkbox" 
-                    name="optin" 
-                    id="optin"
-                    className="mr-2"
-                    required
-                  />
-                  <label htmlFor="optin" className="text-xs">
-                    I agree to receive communications from Valid.*
-                  </label>
-                </div>
-                
-                <div className="flex mt-6 gap-2 md:gap-3">
-                  <div className="grow hidden rounded bg-red-200/30 text-red-400 p-1.5 text-xs">ghyt</div>
-                  <button 
-                    type="submit" 
-                    className="min-w-[30%] px-8 py-3 bg-el-primary-dark text-white rounded-3xl"
-                  >
-                    Send
-                  </button>
-                </div>
-              </form>
+              <ExpertForm showDialogue={showDialogue} handleClose={handleClose} />
               <div className="mt-12 text-[10px] text-gray-600 leading-3.5">
                 <p>
                   We inform you that the data you provide will be included in files owned by Valid Soluciones 

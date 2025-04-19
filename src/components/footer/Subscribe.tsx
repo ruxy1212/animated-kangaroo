@@ -51,7 +51,7 @@ const Subscribe = ({showDialogue}: {showDialogue: () => void}) => {
       <button
         onClick={handleSubmit}
         disabled={isLoading}
-        className="rounded-3xl font-semibold font-grotesk text-white text-xs w-[95px] px-2 transition-all flex items-center justify-center bg-[#131bff] hover:bg-[#182799] cursor-pointer disabled:cursor-not-allowed disabled:bg-[#182799] disabled:hover:bg-[#182799] "
+        className="rounded-3xl font-semibold font-grotesk text-white text-xs w-[95px] px-2 transition-all flex items-center justify-center bg-el-primary-dark hover:bg-[#182799] cursor-pointer disabled:cursor-not-allowed disabled:bg-[#182799] disabled:hover:bg-[#182799] "
       >
         {isLoading ? (
           <span className="relative w-4 h-4">

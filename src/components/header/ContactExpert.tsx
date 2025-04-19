@@ -98,7 +98,7 @@ const ContactExpert: React.FC<ContactExpertProps> = ({ isOpen, onClose }) => {
             <div className="px-5 py-8 md:p-[5vw_3.75vw]">
               <div className="py-10 md:hidden">
                 <button 
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="w-10 h-10 mx-auto flex border border-black items-center justify-center rounded-full focus:outline-none"
                 >
                   <svg width="16" height="15" className="invert" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -299,7 +299,7 @@ const ContactExpert: React.FC<ContactExpertProps> = ({ isOpen, onClose }) => {
         </div>
         
         <button 
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute hidden md:flex border border-el-white top-14 -left-10 w-8 h-8 items-center justify-center bg-black bg-opacity-20 rounded-full focus:outline-none"
         >
           <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">

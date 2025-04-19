@@ -162,6 +162,7 @@ const Header = ({contactExpert}: {contactExpert: () => void}) => {
             <div 
               ref={dropdownRef}
               className="solutions-dropdown fixed top-0 left-0 w-full -z-10 justify-between px-[5vw] pb-[3rem] pt-[6rem] bg-el-white flex items-center"
+              style={{ opacity: 0 }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >

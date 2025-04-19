@@ -158,7 +158,7 @@ const Header = ({contactExpert}: {contactExpert: () => void}) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <Link href={"#"} className="nav-links hover:opacity-50 text-sm transition-all duration-200">Solutions</Link>
+            <a href={"/solutions"} className="nav-links hover:opacity-50 text-sm transition-all duration-200">Solutions</a>
             
             <div 
               ref={dropdownRef}
@@ -190,9 +190,9 @@ const Header = ({contactExpert}: {contactExpert: () => void}) => {
               </div>
             </div>
           </div>
-          <Link href={"#"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">Insights</Link>
-          <Link href={"#"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">About</Link>
-          <Link href={"#"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">Careers</Link>
+          <a href={"/insights"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">Insights</a>
+          <a href={"/about-us"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">About</a>
+          <a href={"/careers"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">Careers</a>
         </nav>
         <CommonButton variant="normal" text="Talk to our experts" onClick={()=>contactExpert()} className="text-xs hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white"/>
       </div>

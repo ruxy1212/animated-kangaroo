@@ -19,9 +19,9 @@ export default function InsightsSection({insightsSection, words}: {insightsSecti
             </div>
           </div>
           <div className="text-center py-4">
-            <Link href="/insights" className="gradient-border relative text-xs px-0.5 py-2.5">
+            <a href="/insights" className="gradient-border relative text-xs px-0.5 py-2.5">
                 <span className="py-2 px-6 md:px-8 bg-el-black">All Insights</span>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

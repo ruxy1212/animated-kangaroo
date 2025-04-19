@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ButtonCarousel from "../carousel/ButtonCarousel";
 import NextEvent from "./_fragment/NextEvent";
 import BlankInsights from "./_fragment/BlankInsights";

@@ -41,21 +41,21 @@ export default function Sidebar({ isOpen, onInner }: SidebarProps) {
           <Image src="/img/logo.svg" alt="Logo" height="0" width="0" className="h-7 md:h-8 lg:h-9 w-auto"/>
         </Link>
         <nav id="sidebar-link" className="flex flex-col gap-6 pt-16 pb-10 text-gray-700 font-grotesk text-2xl md:text-4xl">
-          <a href="#" className="hover:text-black transition">Solutions</a>
-          <a href="#" className="hover:text-black transition">Insights</a>
-          <a href="#" className="hover:text-black transition">About</a>
-          <a href="#" className="hover:text-black transition">Careers</a>
+          <a className="flex items-center gap-3 md:gap-4 hover:text-black transition" onClick={onInner}>
+            <span>Solutions</span>
+            <span>
+              <svg className="w-4 md:w-5" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.641418 13.3707L19.4396 13.3707L11.0196 21.7907L12.9777 23.7489L24.7266 12L12.9777 0.25115L11.0196 2.20929L19.4396 10.6293L0.641418 10.6293L0.641418 13.3707Z" fill="currentColor"></path>
+              </svg>
+            </span>
+          </a>
+          <Link href="#" className="hover:text-black transition">Insights</Link>
+          <Link href="#" className="hover:text-black transition">About</Link>
+          <Link href="#" className="hover:text-black transition">Careers</Link>
         </nav>
         <div id="sidebar-button" className="mt-auto text-center py-2">
-          <Link href="#contact-modal" className="text-sm text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white">Talk to our experts</Link>
+          <Link href="#contact-modal" className="text-sm text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white opacity-0">Talk to our experts</Link>
         </div>
-        {/* <button
-          id="sidebar-button"
-          onClick={onInner}
-          className="mt-auto py-2 px-4 bg-black text-white rounded opacity-0"
-        >
-          Close
-        </button> */}
       </div>
       
     </div>

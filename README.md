@@ -20,4 +20,3 @@ To test on local:
 ## Todos
 Break into components
 Cleanup, reuse components
-Modify header item hover behavior

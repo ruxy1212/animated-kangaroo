@@ -152,13 +152,13 @@ const Header = ({contactExpert}: {contactExpert: () => void}) => {
         <Link href={"/"}>
           <Image id="header-logo" src="/img/logo.svg" alt="Logo" height="0" width="0" className="h-7 md:h-8 lg:h-9 w-auto"/>
         </Link>
-        <nav className="hidden lg:flex gap-8 text-el-white">
+        <nav className="hidden lg:flex items-center gap-8 text-el-white">
           <div 
             className="relative"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <Link href={"#"} className="nav-links hover:opacity-50 text-lg transition-all duration-200">Solutions</Link>
+            <Link href={"#"} className="nav-links hover:opacity-50 text-sm transition-all duration-200">Solutions</Link>
             
             <div 
               ref={dropdownRef}
@@ -190,11 +190,11 @@ const Header = ({contactExpert}: {contactExpert: () => void}) => {
               </div>
             </div>
           </div>
-          <Link href={"#"} className="nav-links hover:opacity-50 text-base transition-colors duration-200">Insights</Link>
-          <Link href={"#"} className="nav-links hover:opacity-50 text-base transition-colors duration-200">About</Link>
-          <Link href={"#"} className="nav-links hover:opacity-50 text-base transition-colors duration-200">Careers</Link>
+          <Link href={"#"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">Insights</Link>
+          <Link href={"#"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">About</Link>
+          <Link href={"#"} className="nav-links hover:opacity-50 text-sm transition-colors duration-200">Careers</Link>
         </nav>
-        <CommonButton variant="normal" text="Talk to our experts" onClick={()=>contactExpert()} className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white"/>
+        <CommonButton variant="normal" text="Talk to our experts" onClick={()=>contactExpert()} className="text-xs hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white"/>
       </div>
     </header>
   );

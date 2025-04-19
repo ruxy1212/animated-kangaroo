@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -14,6 +14,7 @@ import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import ButtonCarousel from "@/components/carousel/ButtonCarousel";
 import MobileMenu from "@/components/header/MobileMenu";
+import ContactExpert from "@/components/header/ContactExpert";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,9 +27,14 @@ type AnimationProps = {
 };
 
 export default function Home() {
+  const [modal, setModal] = useState(false);
   const heroSection = useRef(null);
   const solutionsSection = useRef(null);
   const insightsSection = useRef(null);
+
+  const contactExpert = () => {
+    setModal(true);
+  };
 
   useGSAP(() => {
     if (!heroSection.current) return;
@@ -201,8 +207,9 @@ export default function Home() {
 
   return (
     <div className="bg-el-black min-h-screen">
-      <Header />
-      <MobileMenu />
+      <Header contactExpert={contactExpert}/>
+      <MobileMenu contactExpert={contactExpert}/>
+      <ContactExpert isOpen={modal} onClose={()=>setModal(false)} />
       <section ref={heroSection} className="relative w-full min-h-screen overflow-hidden p-[90vw_0_30vw] xs:p-[45vw_0_30vw] md:p-[28.625vw_0_10vw]" data-component="hero-supertitle">
         <div className="absolute h-full w-full left-0 top-0 transform opacity-100 scale-100 transition-none hero-video will-change-transform">
           <video preload="metadata" autoPlay loop={true} playsInline={true} muted={true} poster="/img/bg-valid-video.jpg" className="w-full align-middle h-full object-cover left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0">
@@ -216,11 +223,11 @@ export default function Home() {
               <em className="hero-text text-transparent not-italic">Empowering</em>
             </div>
             <div className="flex gap-2 items-center font-bold mb-3 lg:mb-0">
-              <Link href="#contact-modal" className="hidden lg:inline mt-3 font-normal text-sm text-el-primary-dark bg-el-white backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:text-el-white hover:bg-el-primary-dark">Talk to our experts</Link>
+              <button onClick={()=>contactExpert()} className="hidden lg:inline mt-3 font-normal text-sm text-el-primary-dark bg-el-white backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:text-el-white hover:bg-el-primary-dark">Talk to our experts</button>
               seamless
             </div>
             <div className="font-bold mb-3 lg:mb-0">connectivity</div>
-            <Link href="#contact-modal" className="lg:hidden mt-5 font-normal text-sm text-el-primary-dark bg-el-white backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:text-el-white hover:bg-el-primary-dark">Talk to our experts</Link>
+            <button onClick={()=>contactExpert()} className="lg:hidden mt-5 font-normal text-sm text-el-primary-dark bg-el-white backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:text-el-white hover:bg-el-primary-dark">Talk to our experts</button>
           </div>
         </div>
       </section>

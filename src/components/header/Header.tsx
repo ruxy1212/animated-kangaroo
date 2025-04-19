@@ -6,7 +6,7 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Header = () => {
+const Header = ({contactExpert}: {contactExpert: () => void}) => {
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -145,7 +145,7 @@ const Header = () => {
           <Link href={"#"} className="hover:opacity-50 text-base transition-colors duration-200 peer-hover:invisible">About</Link>
           <Link href={"#"} className="hover:opacity-50 text-base transition-colors duration-200 peer-hover:invisible">Careers</Link>
         </nav>
-        <Link href="#contact-modal" className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white">Talk to our experts</Link>
+        <button onClick={()=>contactExpert()} className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white">Talk to our experts</button>
       </div>
     </header>
   );

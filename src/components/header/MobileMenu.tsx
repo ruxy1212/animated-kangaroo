@@ -3,7 +3,7 @@ import Hamburger from "./Hamburger";
 import Sidebar from "./Sidebar";
 import InnerMenu from "./InnerMenu";
 
-export default function MobileMenu(){
+export default function MobileMenu({contactExpert}: {contactExpert: () => void}) {
   const [showInnerMenu, setShowInnerMenu] = useState(false);
   const [openHamburger, setOpenHamburger] = useState(false);
   const handleHamburgerClick = () => {
@@ -70,7 +70,7 @@ export default function MobileMenu(){
   return (
     <>
       <Hamburger isOpen={openHamburger} setIsOpen={handleHamburgerClick}/>
-      <Sidebar onInner={()=>setShowInnerMenu(true)} isOpen={openHamburger} />
+      <Sidebar onInner={()=>setShowInnerMenu(true)} contactExpert={contactExpert} isOpen={openHamburger} />
       <InnerMenu isOpen={showInnerMenu && openHamburger} items={items} onClose={()=>setShowInnerMenu(false)} />
     </>
   )

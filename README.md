@@ -11,3 +11,10 @@ To test on local:
 ### Tools/Frameworks:
 - Next.js 15.3
 - React 19.0
+- GSAP 3.12.7
+- Tailwind v4
+
+## Todos
+Break into components
+Cleanup, reuse components
+Modify header item hover behavior

@@ -92,7 +92,7 @@ export default function Footer() {
                 type="email"
                 id="name"
                 placeholder="Email"
-                className="w-full px-3 py-2 border-none focus:outline-none grow text-xs"
+                className="w-full px-3 py-2 border-none focus:outline-none grow text-xs text-el-dark-black"
               />
               <button className="bg-[#131bff] rounded-3xl text-white hover:bg-[#182799] cursor-pointer px-2 text-xs w-[95px] font-semibold font-grotesk">
                 Register

@@ -4,6 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from "@gsap/react";
 import Subscribe from "./Subscribe";
+import Link from "next/link";
+import { aboutLinks, endLinks, insightLinks, solutionLinks } from "@/lib/data/lists";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,7 +76,7 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
       <div className="w-[80vw] m-auto pl-[11px] pr-[11px]">
         <div className="flex flex-col md:flex-row gap-[5vw] mb-[21px]">
           <div className="pl-[4px] pr-[4px] w-full md:w-2/5 mb-8 md:mb-0">
-            <a href="#">
+            <Link href="/">
               <Image
                 src="/img/logo.svg"
                 className="w-[100px] mb-[3.458vw] invert"
@@ -82,7 +84,7 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
                 width={0}
                 height={0}
               />
-            </a>
+            </Link>
             <div className="news">
               <p className="text-[2rem] font-grotesk font-medium tracking-tighter leading-[2.1rem] text-el-dark-black">
                 Subscribe to<br />our newsletter
@@ -96,13 +98,13 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
                 Insights
               </p>
               <ul className="mt-6 text-black cursor-pointer">
-                {["Events", "Webinars", "Brochures", "PRs", "Whitepapers", "Article"].map((item) => (
-                  <li key={item} className="mb-1">
+                {insightLinks.map((item,i) => (
+                  <li key={i} className="mb-1">
                     <a
-                      href="#"
+                      href={`insights/${item.link}`}
                       className="text-[12px] sm:text-[14px] hover:text-gray-500 transition-colors duration-200 font-grotesk"
                     >
-                      {item}
+                      {item.title}
                     </a>
                   </li>
                 ))}
@@ -113,27 +115,13 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
                 Solutions
               </p>
               <ul className="mt-6 text-black cursor-pointer">
-                {[
-                  "SIMs",
-                  "eSIMs",
-                  "eSIM",
-                  "Interoperability",
-                  "Remote SIM",
-                  "Provisioning",
-                  "eSIM Onboarding",
-                  "Journeys",
-                  "Private Network",
-                  "OTA Suite",
-                  "iSE",
-                  "iSIM",
-                  "IoT Connectivity",
-                ].map((item) => (
-                  <li key={item} className="mb-1">
+                {solutionLinks.map((item, i) => (
+                  <li key={i} className="mb-1">
                     <a
-                      href="#"
+                      href={`solutions/${item.link}`}
                       className="text-[12px] sm:text-[14px] hover:text-gray-500 transition-colors duration-200 font-grotesk"
                     >
-                      {item}
+                      {item.title}
                     </a>
                   </li>
                 ))}
@@ -144,13 +132,13 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
                 About
               </p>
               <ul className="mt-6 text-black cursor-pointer">
-                {["About", "Careers"].map((item) => (
-                  <li key={item} className="mb-1">
+                {aboutLinks.map((item, i) => (
+                  <li key={i} className="mb-1">
                     <a
-                      href="#"
+                      href={`/${item.link}`}
                       className="text-[12px] font-grotesk sm:text-[14px] hover:text-gray-500 transition-colors duration-200"
                     >
-                      {item}
+                      {item.title}
                     </a>
                   </li>
                 ))}
@@ -163,18 +151,18 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
         </div>
         <div className="flex justify-between items-center">
           <div className="flex cursor-pointer">
-            {["Privacy Policy", "Terms and Conditions"].map((item) => (
+            {endLinks.map((item, i) => (
               <a
-                key={item}
-                href="#"
+                key={i}
+                href={`/${item.link}`}
                 className="mr-3 font-grotesk mb-0 text-[10px] sm:text-[12px] text-gray-600 hover:text-gray-400 transition-colors duration-200"
               >
-                {item}
+                {item.title}
               </a>
             ))}
           </div>
           <div>
-            <a href="#">
+            <a href="https://linkedin.com/">
               <Image
                 src="/img/neon.svg"
                 className="cursor-pointer h-6 w-6 hover:scale-90 hover:opacity-80 transition-all duration-200"

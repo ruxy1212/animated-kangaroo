@@ -12,7 +12,7 @@ export default function MobileMenu({contactExpert}: {contactExpert: () => void})
   };
 
   const items = [
-    { title: "View All", children: null},
+    { title: "View All", link: "/solutions", children: null},
     ...solutions,
   ];
 

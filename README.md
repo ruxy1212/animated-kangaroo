@@ -1,6 +1,6 @@
 ## Animated Kangaroo: A clone of 'trustedconnectivity.valid.com'
 
-This is a clone of [Valid.com](https://trustedconnectivity.valid.com) using Next.js 15.
+This is a clone of [Valid.com](https://trustedconnectivity.valid.com) using Next.js 15. 
 
 To test on local:
 - Clone the repository `git clone https://github.com/ruxy1212/animated-kangaroo`.
@@ -13,10 +13,7 @@ To test on local:
 - React 19.0
 - GSAP 3.12.7
 - Tailwind v4
+- Framer Motion 12.7
 
 ### Live Demo
 - The clone is hosted here using [Vercel](https://animated-kangaroo.vercel.app/)
-
-## Todos
-Break into components
-Cleanup, reuse components

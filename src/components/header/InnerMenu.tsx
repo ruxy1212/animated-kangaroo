@@ -8,6 +8,7 @@ type subItem = {
     text: string;
     link: string;
   }[] | null;
+  link?: string;
 }
 
 interface InnerSubMenuProps {
@@ -69,8 +70,8 @@ export default function InnerSubMenu({ isOpen, onClose, items }: InnerSubMenuPro
               {items.map((item, idx) => (
                 <li key={idx}>
                   <h3 className="font-grotesk text-xl md:text-2xl">
-                    {item.children && item.children.length > 0 ? (item.title):(
-                      <a className="hover:text-el-primary-dark cursor-pointer" href="#">{item.title}</a>
+                    {item.children && !item.link && item.children.length > 0 ? (item.title):(
+                      <a className="hover:text-el-primary-dark cursor-pointer" href={item.link}>{item.title}</a>
                     )}
                   </h3>
                   {item.children && item.children.length > 0 && (

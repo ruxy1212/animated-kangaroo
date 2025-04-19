@@ -33,6 +33,18 @@ const Modal = ({
     }
   }, [isOpen, duration]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const handleClose = () => {
     setIsClosing(true);
     setLoading(true);
@@ -42,13 +54,11 @@ const Modal = ({
     }, 300);
   };
 
-  // if (!isOpen && !isClosing) return null;
-
   return (
     <AnimatePresence onExitComplete={() => isClosing && onClose()}>
       {(isOpen && !isClosing) && (
         <motion.div 
-          className={cn("fixed inset-0 flex items-center justify-center z-50 transition-colors", loading ? 'bg-el-black/90':'bg-el-black/60 backdrop-blur-xs')}
+          className={cn("fixed inset-0 flex items-center justify-center z-50 transition-colors", loading ? 'bg-el-black/90':'bg-el-black/75 backdrop-blur-xs')}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

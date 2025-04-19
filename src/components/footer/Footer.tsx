@@ -3,10 +3,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from "@gsap/react";
+import Subscribe from "./Subscribe";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Footer() {
+export default function Footer({showDialogue}: {showDialogue: () => void}) {
   const textRef = useRef<HTMLDivElement>(null);
   const firstLine = useRef<HTMLSpanElement>(null);
   const secondLine = useRef<HTMLSpanElement>(null);
@@ -87,7 +88,8 @@ export default function Footer() {
                 Subscribe to<br />our newsletter
               </p>
             </div>
-            <div className="mt-5 rounded-3xl border border-gray-600 flex p-0.5 h-[42px]">
+            <Subscribe showDialogue={showDialogue} />
+            {/* <div className="mt-5 rounded-3xl border border-gray-600 flex p-0.5 h-[42px]">
               <input
                 type="email"
                 id="name"
@@ -97,7 +99,7 @@ export default function Footer() {
               <button className="bg-[#131bff] rounded-3xl text-white hover:bg-[#182799] cursor-pointer px-2 text-xs w-[95px] font-semibold font-grotesk">
                 Register
               </button>
-            </div>
+            </div> */}
           </div>
           <div className="w-full md:w-3/5 flex flex-col sm:flex-row sm:flex-wrap gap-[5vw]">
             <div className="w-full sm:w-[10.833vw] px-1 mb-8 sm:mb-0">

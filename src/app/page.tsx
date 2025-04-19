@@ -30,6 +30,10 @@ type AnimationProps = {
 export default function Home() {
   const [modal, setModal] = useState(false);
   const [respond, setRespond] = useState(false);
+  const [response, setResponse] = useState({
+    title: '',
+    message: ''
+  })
   const heroSection = useRef(null);
   const solutionsSection = useRef(null);
   const insightsSection = useRef(null);
@@ -207,6 +211,8 @@ export default function Home() {
   const evolveWords = evolve.split(' ');
   const words = sentence.split(' ');
 
+  console.log('these', response, respond);
+
   return (
     <div className="bg-el-black min-h-screen">
       <Header contactExpert={contactExpert}/>
@@ -322,7 +328,23 @@ export default function Home() {
         </div>
       </section>
       <ScrollSection />
-      <Footer />
+      <Footer showDialogue={()=>{
+        setResponse({
+          title: "Thank You",
+          message: "You have successfully subscribed to our newsletter, you can opt out at any time from your inbox"
+        });
+        setRespond(true);
+      }}/>
+
+      {response.title && (
+        <Modal 
+          isOpen={respond} 
+          onClose={() => setRespond(false)}
+          title={response.title}
+          message={response.message}
+          buttonText="Got it"
+        />
+      )}
       <div className="flex min-h-screen items-center justify-center">
         <button 
           onClick={() => setRespond(true)}
@@ -331,13 +353,7 @@ export default function Home() {
           Open Modal
         </button>
 
-        <Modal 
-          isOpen={respond} 
-          onClose={() => setRespond(false)}
-          title="Success!"
-          message="Your action has been completed successfully."
-          buttonText="Got it"
-        />
+        
       </div>
     </div>
   );

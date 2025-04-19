@@ -14,6 +14,9 @@ To test on local:
 - GSAP 3.12.7
 - Tailwind v4
 
+### Live Demo
+- The clone is hosted here using [Vercel](https://animated-kangaroo.vercel.app/)
+
 ## Todos
 Break into components
 Cleanup, reuse components

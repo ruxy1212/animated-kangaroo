@@ -3,6 +3,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
+import { solutions } from "@/lib/data/solutions";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,66 +72,18 @@ const Header = ({contactExpert}: {contactExpert: () => void}) => {
             <Link href={"#"} className="hover:opacity-50 text-lg transition-colors duration-200">Solutions</Link>
             <div className="fixed top-0 left-0 w-full -z-10 justify-between px-[5vw] pb-[3rem] pt-[6rem] bg-el-white opacity-0 group-hover:opacity-100 hidden group-hover:flex items-center transition-opacity delay-1000">
               <ul className="col-count-2 col-gap-16">
-                <li className="flex flex-col mb-5">
-                  <p className="text-2xl text-el-black">SIMs</p>
-                  <ul className="text-gray-500 text-sm">
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">SIMs</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="flex flex-col mb-5">
-                  <p className="text-2xl text-el-black">eSIMs</p>
-                  <ul className="text-gray-500 text-sm">
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">eSIMSs for IoT and Consumer</a>
-                    </li>
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">eSIM Interoperability</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="flex flex-col mb-5">
-                  <p className="text-2xl text-el-black">eSIM Solutions</p>
-                  <ul className="text-gray-500 text-sm">
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">Remote SIM Provisioning</a>
-                    </li>
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">eSIM Onboarding Journey</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="flex flex-col mb-5">
-                  <p className="text-2xl text-el-black">5G</p>
-                  <ul className="text-gray-500 text-sm">
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">OTA Suite</a>
-                    </li>
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">Private Networks</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="flex flex-col mb-5">
-                  <p className="text-2xl text-el-black">Integrated SE</p>
-                  <ul className="text-gray-500 text-sm">
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">iSE</a>
-                    </li>
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">iSIM</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="flex flex-col mb-5">
-                  <p className="text-2xl text-el-black">IoT Connectivity</p>
-                  <ul className="text-gray-500 text-sm">
-                    <li>
-                      <a className="hover:opacity-60 transition-all" href="#">IoT Connectivity</a>
-                    </li>
-                  </ul>
-                </li>
+                {solutions && solutions.map((solution) => (
+                  <li key={solution.id} className="flex flex-col mb-5">
+                    <p className="text-2xl text-el-black">{solution.title}</p>
+                    <ul className="text-gray-500 text-sm">
+                      {solution.children && solution.children.map((descendant, j) => (
+                        <li key={j}>
+                          <a className="hover:opacity-60 transition-all" href={descendant.link}>{descendant.text}{descendant.extra && (<span>{descendant.extra}</span>)}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
               </ul>                  
               <div className="min-w-96 max-w-1/2 h-72 rounded-full overflow-hidden relative">
                 <div className="absolute inset-0 bg-el-black opacity-0 z-10"></div>

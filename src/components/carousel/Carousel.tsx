@@ -5,81 +5,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { cn } from '@/lib/utils/cn';
+import { solutions } from '@/lib/data/solutions';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const carouselItems = [
-  {
-    id: 1,
-    title: 'SIMs',
-    description: 'Explore our comprehensive range of SIMs to find the perfect fit for your connectivity needs.',
-    descendant: [
-      {text: "SIM", link: "#"},
-    ],
-    image: '/img/featured-sim.jpg',
-    bg: "bg-[#c189ff]",
-    hover: "hover:text-[#c189ff]",
-  },
-  {
-    id: 2,
-    title: 'eSIMs',
-    description: 'Our secure, scalable eSIMs deliver on-demand reliability for Consumer, IoT, and M2M applications.',
-    descendant: [
-      {text: "eSIMs", link: "#"},
-      {text: "eSIM Interoperability", link: "#"},
-    ],
-    image: '/img/featured-esim.jpg',
-    bg: "bg-[#18e1f3]",
-    hover: "hover:text-[#18e1f3]",
-  },
-  {
-    id: 3,
-    title: 'eSIM Solutions',
-    description: 'Manage eSIM subscriptions and streamline consumer onboarding to drive acquisition and retention.',
-    descendant: [
-      {text: "Remote SIM Provision", link: "#"},
-      {text: "eSIM Onboarding Journeys", link: "#"},
-    ],
-    image: '/img/featurde-esim-solutions.jpg',
-    bg: "bg-[#2ee76f]",
-    hover: "hover:text-[#2ee76f]",
-  },
-  {
-    id: 4,
-    title: '5G',
-    description: 'Our solutions enable seamless integration of private and public networks with advanced interoperable technology and secure OTA management for remote SIM updates.',
-    descendant: [
-      {text: "Private Networks", link: "#"},
-      {text: "OTA Suite", link: "#"},
-    ],
-    image: '/img/featured-5g.jpg',
-    bg: "bg-[#fa9b26]",
-    hover: "hover:text-[#fa9b26]",
-  },
-  {
-    id: 5,
-    title: 'Integrated SE',
-    description: 'Integrated security and seamless connectivity are at the core of our iSE and iSIM solutions, designed for advanced mobile and IoT applications.',
-    descendant: [
-      {text: "iSE", link: "#"},
-      {text: "iSIM", link: "#"},
-    ],
-    image: '/img/featured-integrated-se.jpg',
-    bg: "bg-[#ff6359]",
-    hover: "hover:text-[#ff6359]",
-  },
-  {
-    id: 6,
-    title: 'IoT Connectivity',
-    description: 'Seamlessly connect and secure your IoT ecosystem with scalable, interoperable solutions designed to drive innovation and enable future-proof connectivity.',
-    descendant: [
-      {text: "IoT Connectivity", link: "#"},
-    ],
-    image: '/img/featured-iot-connectivity.jpg',
-    bg: "bg-[#5c9cff]",
-    hover: "hover:text-[#5c9cff]",
-  },
-];
 
 const Carousel: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -267,7 +195,7 @@ const Carousel: React.FC = () => {
         ref={containerRef}
         className="absolute top-0 left-0 w-full md:w-full h-[100vh] flex flex-row will-change-transform"
       >
-        {carouselItems.map((item, index) => (
+        {solutions.map((item, index) => (
           <div
             key={item.id}
             ref={(el) => { itemsRef.current[index] = el; }}
@@ -282,7 +210,7 @@ const Carousel: React.FC = () => {
                 <p className="text-sm text-normal mb-4">{item.description}</p>
               </div>
               <div className="flex flex-wrap gap-2 mt-auto">
-                {item.descendant?.map((descendant, i) => (
+                {item.children?.map((descendant, i) => (
                   <a key={i} href={descendant.link} className={cn("px-4 py-1 text-xs transition-colors rounded-2xl border border-black bg-transparent text-black hover:border-transparent hover:bg-black flex items-center gap-2.5 whitespace-nowrap", item.hover)}>
                     {descendant.text}
                     <svg className="w-3" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -240,11 +240,11 @@ export default function Home() {
               <em className="hero-text text-transparent not-italic">Empowering</em>
             </div>
             <div className="flex gap-2 items-center font-bold mb-3 lg:mb-0">
-              <button onClick={()=>contactExpert()} className="hidden lg:inline mt-3 font-normal text-sm text-el-primary-dark bg-el-white backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:text-el-white hover:bg-el-primary-dark">Talk to our experts</button>
+              <button onClick={()=>contactExpert()} className="hidden lg:inline mt-3 font-normal text-sm text-el-primary-dark bg-el-white backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:text-el-white hover:bg-el-primary-dark cursor-pointer">Talk to our experts</button>
               seamless
             </div>
             <div className="font-bold mb-3 lg:mb-0">connectivity</div>
-            <button onClick={()=>contactExpert()} className="lg:hidden mt-5 font-normal text-sm text-el-primary-dark bg-el-white backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:text-el-white hover:bg-el-primary-dark">Talk to our experts</button>
+            <button onClick={()=>contactExpert()} className="lg:hidden mt-5 font-normal text-sm text-el-primary-dark bg-el-white backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent hover:text-el-white hover:bg-el-primary-dark cursor-pointer">Talk to our experts</button>
           </div>
         </div>
       </section>

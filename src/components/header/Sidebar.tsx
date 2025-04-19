@@ -55,7 +55,7 @@ export default function Sidebar({ isOpen, onInner, contactExpert }: SidebarProps
           <Link href="#" className="hover:text-black transition">Careers</Link>
         </nav>
         <div className="mt-auto text-center py-2">
-          <button onClick={contactExpert} id="sidebar-button" className="text-sm text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white opacity-0">Talk to our experts</button>
+          <button onClick={contactExpert} id="sidebar-button" className="text-sm text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white opacity-0 cursor-pointer">Talk to our experts</button>
         </div>
       </div>
       

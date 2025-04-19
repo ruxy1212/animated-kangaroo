@@ -144,7 +144,7 @@ export default function ButtonCarousel() {
           </div>
           <div className="absolute bottom-2 left-0 flex gap-2.5">
             <button
-              className="w-9 h-9 rounded-full border border-el-dark-black transition-colors hover:bg-el-dark-black/10 flex items-center justify-center rotate-180 group"
+              className="w-9 h-9 rounded-full border border-el-dark-black transition-colors hover:bg-el-dark-black/10 flex items-center justify-center rotate-180 group cursor-pointer"
               onClick={prev}
             >
               <Image
@@ -156,7 +156,7 @@ export default function ButtonCarousel() {
               />
             </button>
             <button
-              className="w-9 h-9 rounded-full border border-el-dark-black transition-colors hover:bg-el-dark-black/10 flex items-center justify-center group"
+              className="w-9 h-9 rounded-full border border-el-dark-black transition-colors hover:bg-el-dark-black/10 flex items-center justify-center group cursor-pointer"
               onClick={next}
             >
               <Image

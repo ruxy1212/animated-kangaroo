@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import CloseButton from "./_fragment/CloseButton";
 
 type subItem = {
   title: string;
@@ -59,14 +60,7 @@ export default function InnerSubMenu({ isOpen, onClose, items }: InnerSubMenuPro
         className="fixed top-0 right-0 z-[100] w-[90vw] max-w-96 h-screen bg-el-white shadow-xl opacity-0"
       >
         <div className="h-full relative">
-          <button
-            onClick={onClose}
-            className="absolute top-16 px-3.5 py-2 z-50 rounded-lg -left-3 xs:-left-12 bg-white/10 backdrop-blur-2xl text-gray-500 hover:text-gray-800 shadow-[0px_0px_1px_0px_white] hover:bg-white/50"
-          >
-            <svg className="w-4 rotate-180" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0.641418 13.3707L19.4396 13.3707L11.0196 21.7907L12.9777 23.7489L24.7266 12L12.9777 0.25115L11.0196 2.20929L19.4396 10.6293L0.641418 10.6293L0.641418 13.3707Z" fill="currentColor"></path>
-            </svg>
-          </button>
+          <CloseButton handleClose={onClose} className="absolute top-16 px-3.5 py-2 z-50 rounded-lg -left-3 xs:-left-12 bg-white/10 backdrop-blur-2xl text-gray-500 hover:text-gray-800 shadow-[0px_0px_1px_0px_white] hover:bg-white/50" variant="submenu" invert={false} />
           <div
             ref={contentRef}
             className="h-full px-5 md:px-7 py-9 md:py-12 overflow-y-auto opacity-0"

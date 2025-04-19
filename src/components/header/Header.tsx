@@ -4,6 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
 import { solutions } from "@/lib/data/solutions";
+import CommonButton from "../common/common-button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -193,7 +194,7 @@ const Header = ({contactExpert}: {contactExpert: () => void}) => {
           <Link href={"#"} className="nav-links hover:opacity-50 text-base transition-colors duration-200">About</Link>
           <Link href={"#"} className="nav-links hover:opacity-50 text-base transition-colors duration-200">Careers</Link>
         </nav>
-        <button onClick={()=>contactExpert()} className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white">Talk to our experts</button>
+        <CommonButton variant="normal" text="Talk to our experts" onClick={()=>contactExpert()} className="text-sm hidden lg:block text-el-primary bg-white/10 backdrop-blur-3xl px-6 py-2.5 rounded-4xl border border-transparent shadow-sm hover:border-white"/>
       </div>
     </header>
   );

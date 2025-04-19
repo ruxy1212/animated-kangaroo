@@ -2,8 +2,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
-import Link from 'next/link';
 import ExpertForm from './_fragment/ExpertForm';
+import Disclaimer from './_fragment/Disclaimer';
+import Locations from './_fragment/Locations';
 
 type ContactExpertProps = {
   isOpen: boolean;
@@ -110,88 +111,11 @@ const ContactExpert: React.FC<ContactExpertProps> = ({ isOpen, onClose, showDial
               </div>
               <h3 className="text-xl md:text-2xl font-normal md:font-semibold mb-8 font-grotesk text-el-dark-black text-center md:text-left">Talk to our experts</h3>
               <ExpertForm showDialogue={showDialogue} handleClose={handleClose} />
-              <div className="mt-12 text-[10px] text-gray-600 leading-3.5">
-                <p>
-                  We inform you that the data you provide will be included in files owned by Valid Soluciones 
-                  Tecnológicas, S.A.U. (&quot;Valid&quot;) for the purpose of sending you our publications and other 
-                  information. The legal basis for this data processing is your explicit consent to receive 
-                  such information by completing and submitting this form. Your data will be retained until 
-                  you unsubscribe from this service using the methods indicated below.
-                </p>
-                <p className="mt-4">
-                  At any time, you may unsubscribe from this free service by clicking the link provided at 
-                  the bottom of each information email. Additionally, you can exercise your rights to access, 
-                  rectify, delete, object, restrict processing, and request data portability, where applicable 
-                  under the relevant regulations, by contacting Valid at&nbsp;
-                  <a href="mailto:trustedconnectivity@valid.com" className="text-el-primary">
-                    trustedconnectivity@valid.com
-                  </a>.
-                </p>
-              </div>
+              <Disclaimer />
             </div>
           </div>
 
-          <div className="relative md:w-[36.25vw] w-full md:h-full px-5 py-8 md:p-[5vw_3.75vw] bg-[#f7f5ff]">
-            <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-[rgba(25,31,128,0.2)] to-[rgba(26,20,250,0.2)] text-transparent bg-clip-text font-grotesk">
-              Our locations
-            </div>
-            
-            <div className="flex gap-3 mt-12">
-              <svg className="w-3.5 h-4" viewBox="0 0 30 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_3833_40245)">
-                  <path opacity="0.5" d="M1.66406 14.9057C1.66406 7.40996 7.6336 1.3335 14.9974 1.3335C22.3612 1.3335 28.3307 7.40996 28.3307 14.9057C28.3307 22.3426 24.0752 31.0208 17.4356 34.1242C15.8878 34.8477 14.107 34.8477 12.5592 34.1242C5.9196 31.0208 1.66406 22.3426 1.66406 14.9057Z" stroke="#131BFF" strokeWidth="2.5"></path>
-                  <circle cx="15" cy="14.6665" r="5" stroke="#131BFF" strokeWidth="2.5"></circle>
-                </g>
-                <defs>
-                  <clipPath id="clip0_3833_40245">
-                    <rect width="30" height="36" fill="white"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-              <div>
-                <div className="text-lg text-el-dark-black font-medium leading-5">Spain</div>
-                <div>
-                  <p className="text-sm mt-1 text-el-dark-black leading-3.5 font-light">
-                    Avenida de Manoteras, 20<br />
-                    Edificio Tokyo – Planta Baja<br />
-                    28050<br />
-                    Madrid, Spain
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex gap-3 mt-12">
-              <svg className="w-3.5 h-4" viewBox="0 0 30 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_3833_40245)">
-                  <path opacity="0.5" d="M1.66406 14.9057C1.66406 7.40996 7.6336 1.3335 14.9974 1.3335C22.3612 1.3335 28.3307 7.40996 28.3307 14.9057C28.3307 22.3426 24.0752 31.0208 17.4356 34.1242C15.8878 34.8477 14.107 34.8477 12.5592 34.1242C5.9196 31.0208 1.66406 22.3426 1.66406 14.9057Z" stroke="#131BFF" strokeWidth="2.5"></path>
-                  <circle cx="15" cy="14.6665" r="5" stroke="#131BFF" strokeWidth="2.5"></circle>
-                </g>
-                <defs>
-                  <clipPath id="clip0_3833_40245">
-                    <rect width="30" height="36" fill="white"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-              <div>
-                <div className="text-lg text-el-dark-black font-medium leading-5">Singapore</div>
-                <div>
-                  <p className="text-sm mt-1 text-el-dark-black leading-3.5 font-light">
-                    67 Ubi Avenue 1,<br />
-                    Starhub Green #06-01<br />
-                    Singapore 408942
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <Link href="#" className="flex items-center mt-12 text-el-primary-dark pb-10 md:pb-0">
-              <span className="border-b border-el-primary-dark mr-2 text-xs">Present in more than 15 countries</span>
-              <svg width="20" height="20" className="h-2.5 w-2.5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3.93846 18L17.2308 4.70769V16.6154H20V0H3.38461V2.76923H15.2923L2 16.0615L3.93846 18Z" fill="#131BFF"></path>
-              </svg>
-            </Link>
-          </div>
+          <Locations />
         </div>
         
         <button 

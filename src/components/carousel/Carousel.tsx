@@ -138,7 +138,7 @@ const Carousel: React.FC = () => {
       });
       
     } else {
-      const totalScrollDistance = (window.innerWidth * (totalItems-1)) + (window.innerHeight);
+      const totalScrollDistance = (window.innerWidth * (totalItems-1)) + (window.innerHeight * 1.25);
       gsap.set(section, { height: totalScrollDistance });
       
       const maxScrollX = lastItem ? lastItem.offsetLeft : 0;

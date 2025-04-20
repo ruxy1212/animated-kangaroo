@@ -16,7 +16,7 @@ const ScrollSection = ({sectionRef, eyeRef, canvasRef, containerRef, h1Ref, text
       <div className="sticky top-0 overflow-hidden">
         <div
           ref={eyeRef}
-          className="eye w-full top-0 fixed h-screen opacity-[0.0001] scale-50"
+          className="eye w-full top-0 fixed h-screen opacity-[0.0001] scale-50 pointer-events-none"
         >
           <canvas
             ref={canvasRef}

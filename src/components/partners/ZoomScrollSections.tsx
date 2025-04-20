@@ -23,8 +23,7 @@ export default function ZoomScrollSections({text}:{text: string}){
   useEffect(() => {
     for (let i = 0; i < totalFrames; i++) {
       const img = new Image();
-      img.src = `/img/canvas/${i.toString().padStart(5, '0')}.jpg`; // Adjust path
-      // Set onload for the first image to render frame 0
+      img.src = `/img/canvas/${i.toString().padStart(5, '0')}.jpg`;
       if (i === 0) {
         img.onload = () => {
           const canvas = canvasRef.current;
@@ -40,24 +39,17 @@ export default function ZoomScrollSections({text}:{text: string}){
   }, []);
 
   useGSAP(() => {
-    const totalScroll: number = (window.innerHeight * 5.05); // 1010vh
+    const totalScroll: number = (window.innerHeight * 5.05);
 
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
     
-    // Set canvas dimensions based on device
     const isMobile = window.innerWidth < 768;
     const desktopWidth = 800;
     const mobileWidth = window.innerWidth * 0.9;
     canvas.width = isMobile ? mobileWidth : desktopWidth;
     canvas.height = isMobile ? mobileWidth : 600;
 
-    // if (isMobile) {
-    //   canvas.style.width = '90vw';
-    //   canvas.style.height = 'auto';
-    // }
-
-    // Render frame
     const renderFrame = (frame: number) => {
       const img = imagesRef.current[frame];
       if (ctx && img && img.complete) {
@@ -66,12 +58,10 @@ export default function ZoomScrollSections({text}:{text: string}){
       }
     };
 
-    // Initial render (only if first image is already loaded)
     if (imagesRef.current[0]?.complete) {
       renderFrame(0);
     }
 
-    // ScrollTrigger animation for canvas frames
     ScrollTrigger.create({
       trigger: sectionRef.current,
       start: 'top+=40% top',
@@ -91,7 +81,6 @@ export default function ZoomScrollSections({text}:{text: string}){
       transformOrigin: '516px 114px', 
     });
 
-    // Main timeline for first section animations
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -165,10 +154,10 @@ export default function ZoomScrollSections({text}:{text: string}){
         try {
           // Using html2canvas to capture the entire eye element with overlays
           const capturedImage = await html2canvas(eyeRef.current, {
-            backgroundColor: null, // Transparent background
+            backgroundColor: null,
             allowTaint: true,
             useCORS: true,
-            scale: window.devicePixelRatio || 1, // Capture at device resolution
+            scale: window.devicePixelRatio || 1,
           });
           
           const imageUrl = capturedImage.toDataURL('image/png');
@@ -178,7 +167,7 @@ export default function ZoomScrollSections({text}:{text: string}){
           secondSectionRef.current.style.backgroundSize = 'cover';
           secondSectionRef.current.style.backgroundPosition = 'center top';
           secondSectionRef.current.style.backgroundRepeat = 'no-repeat';
-          secondSectionRef.current.style.backgroundColor = '#0a0d3a'; // Match background color
+          secondSectionRef.current.style.backgroundColor = '#0a0d3a';
           
           return imageUrl;
         } catch (error) {
@@ -192,7 +181,7 @@ export default function ZoomScrollSections({text}:{text: string}){
     // Main transition trigger at the exact moment section 2 reaches top of viewport
     ScrollTrigger.create({
       trigger: secondSectionRef.current,
-      start: "top top", // Exactly when section 2 hits the top
+      start: "top top",
       end: "top top",
       onEnter: async () => {
         // Pre-capture the background before any transitions

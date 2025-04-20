@@ -20,10 +20,10 @@ export default function Hamburger({isOpen, setIsOpen}: HamburgerProps) {
         .to(middleRef.current, { opacity: 0, scaleX: 0, backgroundColor: '#364153' }, 0)
         .set('#menu-complete-trigger', { backgroundColor: 'white', boxShadow: '0px 0px 1px 0px gray' });
     } else {
-      tl.to(topRef.current, { yPercent: -450, rotate: 0, backgroundColor: '#e5e7eb' }, 0)
-        .to(bottomRef.current, { yPercent: 360, rotate: 0, backgroundColor: '#e5e7eb' }, 0)
-        .to(middleRef.current, { opacity: 1, scaleX: 1, backgroundColor: '#e5e7eb' }, 0)
-        .set('#menu-complete-trigger', { backgroundColor: '#ffffff0a', boxShadow: '0px 0px 1px 0px gray' });
+      tl.to(topRef.current, { yPercent: -450, rotate: 0, backgroundColor: '#ababab' }, 0)
+        .to(bottomRef.current, { yPercent: 360, rotate: 0, backgroundColor: '#ababab' }, 0)
+        .to(middleRef.current, { opacity: 1, scaleX: 1, backgroundColor: '#ababab' }, 0)
+        .set('#menu-complete-trigger', { backgroundColor: '#ffffff1a', boxShadow: '0px 0px 1px 0px gray' });
     }
   }, [isOpen]);
 

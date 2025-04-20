@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import Subscribe from "./Subscribe";
 import Link from "next/link";
 import { aboutLinks, endLinks, insightLinks, solutionLinks } from "@/lib/data/lists";
+import InfiniteText from "./InfiniteText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,19 +64,18 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
     };
   }, []);
 
+  const navLinks = [
+    {title: 'Insights', links: insightLinks},
+    {title: 'Solutions', links: solutionLinks},
+    {title: 'About', links: aboutLinks}
+  ]
+
   return (
     <footer className="p-[100px_0px_100px] bg-white">
-      <div className="hero-text mb-[10vw] overflow-hidden">
-        <div className="flex whitespace-nowrap scrolling-text">
-          <h1 ref={textRef} className="text-7xl md:text-9xl font-grotesk font-semibold text-el-primary-dark">
-            <span ref={firstLine} style={{ display: "inline-block", marginRight: "30px" }}>Empowering the future of connectivity</span>
-            <span ref={secondLine} style={{ display: "inline-block", marginRight: "30px" }}>Empowering the future of connectivity</span>
-          </h1>
-        </div>
-      </div>
-      <div className="w-[80vw] m-auto pl-[11px] pr-[11px]">
+      <InfiniteText textRef={textRef} firstLine={firstLine} secondLine={secondLine} />
+      <div className="w-full md:w-[80vw] m-auto px-5">
         <div className="flex flex-col md:flex-row gap-[5vw] mb-[21px]">
-          <div className="pl-[4px] pr-[4px] w-full md:w-2/5 mb-8 md:mb-0">
+          <div className="px-1 w-full md:w-2/5 mb-8 md:mb-0">
             <Link href="/">
               <Image
                 src="/img/logo.svg"
@@ -85,91 +85,59 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
                 height={0}
               />
             </Link>
-            <div className="news">
-              <p className="text-[2rem] font-grotesk font-medium tracking-tighter leading-[2.1rem] text-el-dark-black">
+            <div className="news py-5">
+              <p className="text-4xl font-grotesk font-medium leading-8 text-el-dark-black">
                 Subscribe to<br />our newsletter
               </p>
             </div>
             <Subscribe showDialogue={showDialogue} />
           </div>
-          <div className="w-full md:w-3/5 flex flex-col sm:flex-row sm:flex-wrap gap-[5vw]">
-            <div className="w-full sm:w-[10.833vw] px-1 mb-8 sm:mb-0">
-              <p className="font-grotesk font-medium text-black text-[16px] sm:text-[18px] tracking-tight leading-tight">
-                Insights
-              </p>
-              <ul className="mt-6 text-black cursor-pointer">
-                {insightLinks.map((item,i) => (
-                  <li key={i} className="mb-1">
-                    <a
-                      href={`insights/${item.link}`}
-                      className="text-[12px] sm:text-[14px] hover:text-gray-500 transition-colors duration-200 font-grotesk"
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="w-full sm:w-[10.833vw] px-1 mb-8 sm:mb-0">
-              <p className="font-medium text-black text-[16px] sm:text-[18px] tracking-tight leading-tight font-grotesk">
-                Solutions
-              </p>
-              <ul className="mt-6 text-black cursor-pointer">
-                {solutionLinks.map((item, i) => (
-                  <li key={i} className="mb-1">
-                    <a
-                      href={`solutions/${item.link}`}
-                      className="text-[12px] sm:text-[14px] hover:text-gray-500 transition-colors duration-200 font-grotesk"
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="w-full sm:w-[10.833vw] px-1">
-              <p className="font-medium text-black text-[16px] sm:text-[18px] tracking-tight leading-tight font-grotesk">
-                About
-              </p>
-              <ul className="mt-6 text-black cursor-pointer">
-                {aboutLinks.map((item, i) => (
-                  <li key={i} className="mb-1">
-                    <a
-                      href={`/${item.link}`}
-                      className="text-[12px] font-grotesk sm:text-[14px] hover:text-gray-500 transition-colors duration-200"
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="w-full md:w-3/5 flex flex-col sm:flex-row sm:flex-wrap gap-[calc(5vw+28px)] md:gap-[5vw]">
+            {navLinks.map(navLink=>(
+              <div key={navLink.title} className="w-full sm:w-[10.833vw] px-1">
+                <p className="font-grotesk font-medium text-black text-xl md:text-2xl leading-tight">{navLink.title}</p>
+                <ul className="mt-6 text-black">
+                  {navLink.links.map((item,i) => (
+                    <li key={i} className="mb-4 md:mb-1 cursor-pointer">
+                      <a
+                        href={`insights/${item.link}`}
+                        className="text-base md:text-sm hover:text-gray-500 transition-colors duration-200 font-grotesk"
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="mt-6 mb-2">
-          <hr className="border-[#2d2d2d] " />
+        <div className="my-8 md:mt-6 md:mb-2">
+          <hr className="bg-[#01010c] " />
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex cursor-pointer">
+        <div className="flex flex-col md:flex-row gap-16 justify-between md:items-center">
+          <div className="flex flex-col md:flex-row gap-4 cursor-pointer">
             {endLinks.map((item, i) => (
               <a
                 key={i}
                 href={`/${item.link}`}
-                className="mr-3 font-grotesk mb-0 text-[10px] sm:text-[12px] text-gray-600 hover:text-gray-400 transition-colors duration-200"
+                className="font-grotesk mb-0 text-xs text-black md:text-gray-600 hover:text-gray-400 transition-colors duration-200"
               >
                 {item.title}
               </a>
             ))}
           </div>
           <div>
-            <a href="https://linkedin.com/">
+            <a href="https://linkedin.com/" className="hover:scale-90 hover:opacity-80 transition-all duration-200">
+             <div className="border border-el-dark-black rounded-full p-5 md:p-2 inline-block">
               <Image
                 src="/img/neon.svg"
-                className="cursor-pointer h-6 w-6 hover:scale-90 hover:opacity-80 transition-all duration-200"
+                className="cursor-pointer h-6 w-6 md:h-4 md:w-4"
                 alt="linkedin-icon"
                 width={0}
                 height={0}
               />
+             </div>
             </a>
           </div>
         </div>

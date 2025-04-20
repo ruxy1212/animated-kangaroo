@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils/cn';
 import React, { useState } from 'react';
+import CommonButton from '../common/common-button';
 
 const Subscribe = ({showDialogue}: {showDialogue: () => void}) => {
   const [email, setEmail] = useState('');
@@ -34,12 +35,12 @@ const Subscribe = ({showDialogue}: {showDialogue: () => void}) => {
 
   return (
     <div
-      className={cn("mt-5 rounded-3xl border flex p-0.5 h-[42px] transition-all", error ? 'border-red-500' : 'border-gray-600')}
+      className={cn("mt-5 rounded-4xl border flex p-1 transition-all", error ? 'border-red-500' : 'border-gray-600')}
     >
       <input
         type="email"
         placeholder="Email"
-        className="w-full px-3 py-2 border-none focus:outline-none grow text-xs text-el-dark-black"
+        className="w-full px-3 py-3.5 border-none focus:outline-none grow text-base md:text-lg text-el-dark-black"
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
@@ -47,11 +48,11 @@ const Subscribe = ({showDialogue}: {showDialogue: () => void}) => {
         }}
         disabled={isLoading}
       />
-
-      <button
-        onClick={handleSubmit}
+      <CommonButton 
+        type="submit"
         disabled={isLoading}
-        className="rounded-3xl font-semibold font-grotesk text-white text-xs w-[95px] px-2 transition-all flex items-center justify-center bg-el-primary-dark hover:bg-[#182799] cursor-pointer disabled:cursor-not-allowed disabled:bg-[#182799] disabled:hover:bg-[#182799] "
+        onClick={handleSubmit}
+        className="rounded-4xl font-medium font-grotesk text-white text-lg md:text-xl px-7 transition-all flex items-center justify-center bg-el-primary-dark hover:bg-[#182799] cursor-pointer disabled:cursor-not-allowed disabled:bg-[#182799] disabled:hover:bg-[#182799]"
       >
         {isLoading ? (
           <span className="relative w-4 h-4">
@@ -60,7 +61,7 @@ const Subscribe = ({showDialogue}: {showDialogue: () => void}) => {
         ) : (
           'Register'
         )}
-      </button>
+      </CommonButton>
     </div>
   );
 };

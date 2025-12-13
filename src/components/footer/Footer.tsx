@@ -71,7 +71,7 @@ export default function Footer({showDialogue}: {showDialogue: () => void}) {
   ]
 
   return (
-    <footer className="p-[100px_0px_100px] bg-white">
+    <footer className="p-[100px_0px_100px] bg-white relative z-50">
       <InfiniteText textRef={textRef} firstLine={firstLine} secondLine={secondLine} />
       <div className="w-full md:w-[80vw] m-auto px-5">
         <div className="flex flex-col md:flex-row gap-[5vw] mb-[21px]">

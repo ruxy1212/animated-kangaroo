@@ -140,67 +140,32 @@ export default function ZoomScrollSections({text}:{text: string}){
 
     // Scene 6: 900-910vh (container fade and eye animation)
     tl.to(containerRef.current, {
-      opacity: 0,
+      opacity: 1,
       duration: 0.1, // 10vh
     }, 9).to(eyeRef.current, {
       scale: 1,
       opacity: 1,
       duration: 0.1,
+      position: 'fixed',
     }, 9);
-
-    // Function to capture canvas as background image
-    const captureEyeAsBackground = async () => {
-      if (eyeRef.current && secondSectionRef.current) {
-        try {
-          // Using html2canvas to capture the entire eye element with overlays
-          const capturedImage = await html2canvas(eyeRef.current, {
-            backgroundColor: null,
-            allowTaint: true,
-            useCORS: true,
-            scale: window.devicePixelRatio || 1,
-          });
-          
-          const imageUrl = capturedImage.toDataURL('image/png');
-          
-          // Apply the captured image to the second section background
-          secondSectionRef.current.style.backgroundImage = `url(${imageUrl})`;
-          secondSectionRef.current.style.backgroundSize = 'cover';
-          secondSectionRef.current.style.backgroundPosition = 'center top';
-          secondSectionRef.current.style.backgroundRepeat = 'no-repeat';
-          secondSectionRef.current.style.backgroundColor = '#0a0d3a';
-          
-          return imageUrl;
-        } catch (error) {
-          console.error("Error capturing eye element:", error);
-          return null;
-        }
-      }
-      return null;
-    };
 
     // Main transition trigger at the exact moment section 2 reaches top of viewport
     ScrollTrigger.create({
       trigger: secondSectionRef.current,
-      start: "top top",
-      end: "top top",
-      onEnter: async () => {
-        // Pre-capture the background before any transitions
-        const imageUrl = await captureEyeAsBackground();
-        
-        if (imageUrl) {
-          // Fade out eye/canvas
-          gsap.to(eyeRef.current, { 
-            opacity: 0,
-            duration: 0.4,
-            ease: "power2.inOut",
-            onComplete: () => {
-              // After fade out, change position from fixed to absolute
-              if (eyeRef.current) {
-                eyeRef.current.style.position = 'absolute';
-              }
+      start: "70% top",
+      end: "bottom top",
+      onEnter: () => {
+        // Fade out eye/canvas
+        gsap.to(eyeRef.current, { 
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+          onComplete: () => {
+            if (eyeRef.current) {
+              eyeRef.current.style.position = 'fixed';
             }
-          });
-        }
+          }
+        });
       },
       onLeaveBack: () => {
         // Reset eye/canvas to fixed
@@ -211,13 +176,11 @@ export default function ZoomScrollSections({text}:{text: string}){
         // Fade in eye/canvas
         gsap.to(eyeRef.current, { 
           opacity: 1,
-          duration: 0.4,
+          duration: 0.8,
           ease: "power2.inOut",
           onComplete: () => {
-            // Remove background from second section
-            if (secondSectionRef.current) {
-              secondSectionRef.current.style.backgroundImage = 'none';
-              secondSectionRef.current.style.backgroundColor = 'transparent';
+            if (eyeRef.current) {
+              eyeRef.current.style.position = 'fixed';
             }
           }
         });

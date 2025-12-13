@@ -207,7 +207,7 @@ const Carousel: React.FC = () => {
             >
               <div className="flex flex-col justify-center items-start w-full md:w-60">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">{item.title}</h2>
-                <p className="text-sm text-normal mb-4">{item.description}</p>
+                <p className="text-sm text-normal lg:text-base xl:text-lg 2xl:text-xl mb-4">{item.description}</p>
               </div>
               <div className="flex flex-wrap gap-2 mt-auto">
                 {item.children?.map((descendant, i) => (

@@ -13,6 +13,9 @@ import Hero from "@/components/hero/Hero";
 import CarouselSection from "@/components/carousel/CarouselSection";
 import InsightsSection from "@/components/partners/InsightsSection";
 import ZoomScrollSections from "@/components/partners/ZoomScrollSections";
+import AboutItem from '@/components/partners/_fragment/AboutItem';
+import Link from 'next/link';
+import ReadingText from '@/components/common/reading-text';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -224,6 +227,7 @@ export default function Home() {
       <CarouselSection solutionsSection={solutionsSection} words={words} />
       <InsightsSection insightsSection={insightsSection} words={evolveWords} />
       <ZoomScrollSections text="Your trusted partner for secure and interoperable mobile services" />
+      
       <Footer showDialogue={()=>{
         setResponse({
           title: "Thank You",

@@ -230,6 +230,8 @@ const Carousel: React.FC = () => {
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover opacity-0 scale-110"
+                // placeholder="blur"
+                // blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTBlMGUwIi8+PC9zdmc+"
               />
             </div>
           </div>
